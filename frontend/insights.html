@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartBudget - Insights</title>
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation (Same as dashboard) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="logo">SB</div>
+                <span class="brand-text">SmartBudget</span>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="dashboard.html">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="add_expense.html">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Add Expense
+                </a>
+                <a href="insights.html" class="active">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    Insights
+                </a>
+                <a href="goals.html">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="12" r="6"></circle>
+                        <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                    Goals
+                </a>
+                <a href="#" class="profile-link">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    Profile
+                </a>
+                <button class="logout-btn" onclick="logout()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="page-container">
+        <h1 class="page-title">Smart Insights Powered by ML</h1>
+        
+        <!-- Insight Cards -->
+        <div class="insights-cards">
+            <div class="insight-card">
+                <div class="insight-icon" style="background-color: rgba(210, 4, 45, 0.1); color: #D2042D;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                        <polyline points="17 6 23 6 23 12"></polyline>
+                    </svg>
+                </div>
+                <div>
+                    <h4>Spending Alert</h4>
+                    <p>Your food expenses increased by 23% this month</p>
+                </div>
+            </div>
+
+            <div class="insight-card">
+                <div class="insight-icon" style="background-color: rgba(34, 139, 34, 0.1); color: #228B22;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+                <div>
+                    <h4>Good Habit</h4>
+                    <p>You saved 15% more than last month</p>
+                </div>
+            </div>
+
+            <div class="insight-card">
+                <div class="insight-icon" style="background-color: rgba(255, 165, 0, 0.1); color: #FFA500;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                </div>
+                <div>
+                    <h4>Budget Tip</h4>
+                    <p>Consider switching to a cheaper phone plan</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="charts-row">
+            <div class="chart-card">
+                <h3>Category Breakdown</h3>
+                <canvas id="categoryBarChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Spending Distribution</h3>
+                <canvas id="distributionChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Prediction Chart -->
+        <div class="chart-card full-width">
+            <h3>Expense Prediction (Next 3 Months)</h3>
+            <canvas id="predictionChart"></canvas>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('mobile-open');
+        });
+
+        function logout() {
+            localStorage.removeItem('user');
+            window.location.href = 'index.html';
+        }
+
+        // Check authentication
+        if (!localStorage.getItem('user')) {
+            window.location.href = 'index.html';
+        }
+
+        // Initialize Charts
+        const categoryData = {
+            labels: ['Food', 'Transport', 'Shopping', 'Bills', 'Entertainment'],
+            datasets: [{
+                data: [450, 280, 320, 600, 180],
+                backgroundColor: ['#D2042D', '#8B0000', '#A52A2A', '#C41E3A', '#DC143C']
+            }]
+        };
+
+        new Chart(document.getElementById('categoryBarChart'), {
+            type: 'bar',
+            data: categoryData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        new Chart(document.getElementById('distributionChart'), {
+            type: 'pie',
+            data: categoryData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        new Chart(document.getElementById('predictionChart'), {
+            type: 'line',
+            data: {
+                labels: ['Jul', 'Aug', 'Sep', 'Oct'],
+                datasets: [
+                    {
+                        label: 'Actual',
+                        data: [1400, null, null, null],
+                        borderColor: '#D2042D',
+                        backgroundColor: 'rgba(210, 4, 45, 0.1)',
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Predicted',
+                        data: [1400, 1520, 1580, 1650],
+                        borderColor: '#FFA500',
+                        backgroundColor: 'rgba(255, 165, 0, 0.1)',
+                        borderDash: [5, 5],
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+</body>
+</html>
