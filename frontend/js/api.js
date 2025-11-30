@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = "http://127.0.0.1:5000/api";
 
 // Mock data storage (replace with real API calls)
 const mockExpenses = [
