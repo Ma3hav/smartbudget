@@ -1,0 +1,72 @@
+# Base URL
+@baseUrl = http://localhost:5000
+
+###
+# Signup (creates user, returns tokens)
+POST {{baseUrl}}/api/auth/signup
+Content-Type: application/json
+
+{
+  "email": "tester@example.com",
+  "name": "Tester",
+  "password": "Password123"
+}
+
+###
+# Login (get access token)
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "tester@example.com",
+  "password": "Password123"
+}
+
+###
+# After login: copy the access_token value and set it below
+# Initialize default categories for user (optional)
+POST {{baseUrl}}/api/categories/init-defaults
+Authorization: Bearer <ACCESS_TOKEN>
+
+###
+# Create expense
+POST {{baseUrl}}/api/expenses/
+Content-Type: application/json
+Authorization: Bearer <ACCESS_TOKEN>
+
+{
+  "amount": 250.50,
+  "category": "Food",
+  "payment_type": "UPI",
+  "date": "2025-11-01T12:00:00Z",
+  "notes": "Lunch with colleagues",
+  "tags": ["lunch","work"]
+}
+
+###
+# List expenses (first page)
+GET {{baseUrl}}/api/expenses/?page=1&limit=20
+Authorization: Bearer <ACCESS_TOKEN>
+
+###
+# Get expense statistics for current month
+GET {{baseUrl}}/api/expenses/statistics
+Authorization: Bearer <ACCESS_TOKEN>
+
+###
+# Create a category
+POST {{baseUrl}}/api/categories/
+Content-Type: application/json
+Authorization: Bearer <ACCESS_TOKEN>
+
+{
+  "name": "Coffee",
+  "icon": "coffee",
+  "color": "#A52A2A",
+  "budget_limit": 500
+}
+
+###
+# Get current user profile
+GET {{baseUrl}}/api/auth/me
+Authorization: Bearer <ACCESS_TOKEN>
