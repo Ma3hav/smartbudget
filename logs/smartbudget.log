@@ -1,0 +1,10 @@
+[2025-12-01 13:33:40] INFO in logger [C:\Users\Madhav\OneDrive\Desktop\smartbudget\backend\utils\logger.py:78]: ============================================================
+[2025-12-01 13:33:40] INFO in logger [C:\Users\Madhav\OneDrive\Desktop\smartbudget\backend\utils\logger.py:79]: SmartBudget Application Started
+[2025-12-01 13:33:40] INFO in logger [C:\Users\Madhav\OneDrive\Desktop\smartbudget\backend\utils\logger.py:80]: Environment: development
+[2025-12-01 13:33:40] INFO in logger [C:\Users\Madhav\OneDrive\Desktop\smartbudget\backend\utils\logger.py:81]: Debug Mode: True
+[2025-12-01 13:33:40] INFO in logger [C:\Users\Madhav\OneDrive\Desktop\smartbudget\backend\utils\logger.py:82]: Log Level: DEBUG
+[2025-12-01 13:33:40] INFO in logger [C:\Users\Madhav\OneDrive\Desktop\smartbudget\backend\utils\logger.py:83]: ============================================================
+[2025-12-01 13:33:40] INFO in app [C:\Users\Madhav\OneDrive\Desktop\smartbudget\backend\app.py:73]: Application configured successfully
+[2025-12-01 13:33:46] INFO in app [C:\Users\Madhav\OneDrive\Desktop\smartbudget\backend\app.py:113]: Database connected successfully
+[2025-12-01 13:34:15] INFO in app [C:\Users\Madhav\OneDrive\Desktop\smartbudget\backend\app.py:137]: All blueprints registered
+[2025-12-01 13:34:15] INFO in app [C:\Users\Madhav\OneDrive\Desktop\smartbudget\backend\app.py:294]: Application initialization complete

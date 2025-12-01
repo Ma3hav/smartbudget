@@ -7,7 +7,7 @@ FIXED VERSION with enhanced CORS and logging
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
-from config import config
+from .config import config
 from utils.db_connection import db
 from utils.logger import setup_logger, setup_request_logging, setup_error_logging
 import os
