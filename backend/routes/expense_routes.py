@@ -4,8 +4,8 @@ Expense Routes - Expense management endpoints
 
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from services.expense_service import ExpenseService
-from models.expense_model import ExpenseSchema, ExpenseUpdateSchema, ExpenseFilterSchema
+from backend.services.expense_service import ExpenseService
+from backend.models.expense_model import ExpenseSchema, ExpenseUpdateSchema, ExpenseFilterSchema
 from marshmallow import ValidationError
 from datetime import datetime
 

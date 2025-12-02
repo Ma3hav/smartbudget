@@ -4,8 +4,8 @@ Authentication Routes - User registration and login endpoints
 
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from services.auth_service import AuthService
-from models.user_model import UserSchema, UserLoginSchema, UserUpdateSchema
+from backend.services.auth_service import AuthService
+from backend.models.user_model import UserSchema, UserLoginSchema, UserUpdateSchema
 from marshmallow import ValidationError
 
 bp = Blueprint('auth', __name__)

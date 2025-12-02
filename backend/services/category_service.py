@@ -2,9 +2,9 @@
 Category Service - Handles category CRUD operations
 """
 
-from models.category_model import Category
-from utils.db_connection import get_categories_collection
-from utils.validation import sanitize_string
+from backend.models.category_model import Category
+from backend.utils.db_connection import get_categories_collection
+from backend.utils.validation import sanitize_string
 from bson import ObjectId
 from datetime import datetime
 
@@ -343,7 +343,7 @@ class CategoryService:
             dict: Category spending data
         """
         try:
-            from utils.db_connection import get_expenses_collection
+            from backend.utils.db_connection import get_expenses_collection
             
             if isinstance(user_id, str):
                 user_id = ObjectId(user_id)

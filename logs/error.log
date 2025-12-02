@@ -1,0 +1,11 @@
+[2025-12-02 13:19:04] ERROR in logger [C:\Users\Madhav\OneDrive\Desktop\SMARTBUDGET\backend\utils\logger.py:117]: Unhandled Exception: 'Database' object has no attribute 'health_check'
+Traceback (most recent call last):
+  File "C:\Users\Madhav\OneDrive\Desktop\smartbudget\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Madhav\OneDrive\Desktop\smartbudget\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Madhav\OneDrive\Desktop\SMARTBUDGET\backend\app.py", line 146, in health_check
+    health_info = db.health_check() if db_status else {}
+                  ^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'health_check'

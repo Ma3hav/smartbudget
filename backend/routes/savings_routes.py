@@ -4,8 +4,8 @@ Savings Routes - Savings goal management endpoints
 
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from services.savings_service import SavingsService
-from models.savings_model import SavingsGoalSchema, SavingsGoalUpdateSchema, SavingsTransactionSchema
+from backend.services.savings_service import SavingsService
+from backend.models.savings_model import SavingsGoalSchema, SavingsGoalUpdateSchema, SavingsTransactionSchema
 from marshmallow import ValidationError
 
 bp = Blueprint('savings', __name__)

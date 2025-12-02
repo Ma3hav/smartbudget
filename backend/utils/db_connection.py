@@ -31,13 +31,13 @@ class Database:
     def connect(self):
         """Establish connection to MongoDB"""
         try:
-            mongo_uri = os.getenv('mongodb+srv://madhavsinghaiml_db_user:G3oxbNz0hCFIStAe@m0.pf8vlgt.mongodb.net/smartbudget?retryWrites=true&w=majority&appName=M0', 'mongodb://localhost:27017/smartbudget')
-            db_name = os.getenv('smartbudget', 'smartbudget')
+            mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/smartbudget')
+            db_name = os.getenv('DB_NAME', 'smartbudget')
             
             # Create MongoDB client
             self._client = MongoClient(
                 mongo_uri,
-                serverSelectionTimeoutMS=5000,  # 5 second timeout
+                serverSelectionTimeoutMS=5000,
                 connectTimeoutMS=10000,
                 socketTimeoutMS=10000
             )
@@ -116,6 +116,33 @@ class Database:
         except Exception as e:
             print(f"❌ Database ping failed: {e}")
             return False
+    
+    def health_check(self):
+        """Get database health information"""
+        try:
+            if not self._client or not self._db:
+                return {
+                    'status': 'disconnected',
+                    'message': 'Database not connected'
+                }
+            
+            # Test connection
+            self._client.admin.command('ping')
+            
+            # Get server info
+            server_info = self._client.server_info()
+            
+            return {
+                'status': 'healthy',
+                'database': self._db.name,
+                'mongodb_version': server_info.get('version', 'unknown'),
+                'connection': 'active'
+            }
+        except Exception as e:
+            return {
+                'status': 'unhealthy',
+                'error': str(e)
+            }
     
     def drop_database(self):
         """Drop the entire database (use with caution!)"""

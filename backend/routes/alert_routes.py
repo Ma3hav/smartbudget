@@ -4,8 +4,8 @@ Alert Routes - Budget alert and notification endpoints
 
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from services.alert_service import AlertService
-from models.alert_model import AlertSchema, AlertFilterSchema
+from backend.services.alert_service import AlertService
+from backend.models.alert_model import AlertSchema, AlertFilterSchema
 from marshmallow import ValidationError
 
 bp = Blueprint('alerts', __name__)

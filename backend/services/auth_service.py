@@ -2,10 +2,10 @@
 Authentication Service - Handles user authentication and authorization
 """
 
-from models.user_model import User
-from utils.db_connection import get_users_collection
-from utils.jwt_utils import generate_tokens
-from utils.validation import is_valid_email, is_valid_password
+from backend.models.user_model import User
+from backend.utils.db_connection import get_users_collection
+from backend.utils.jwt_utils import generate_tokens
+from backend.utils.validation import is_valid_email, is_valid_password
 from bson import ObjectId
 from datetime import datetime
 

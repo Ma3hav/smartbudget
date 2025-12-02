@@ -2,9 +2,9 @@
 Expense Service - Handles expense CRUD operations
 """
 
-from models.expense_model import Expense
-from utils.db_connection import get_expenses_collection
-from utils.validation import validate_amount, is_valid_object_id
+from backend.models.expense_model import Expense
+from backend.utils.db_connection import get_expenses_collection
+from backend.utils.validation import validate_amount, is_valid_object_id
 from bson import ObjectId
 from datetime import datetime, timedelta
 

@@ -4,8 +4,8 @@ Category Routes - Custom category management endpoints
 
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from services.category_service import CategoryService
-from models.category_model import CategorySchema, CategoryUpdateSchema
+from backend.services.category_service import CategoryService
+from backend.models.category_model import CategorySchema, CategoryUpdateSchema
 from marshmallow import ValidationError
 
 bp = Blueprint('categories', __name__)

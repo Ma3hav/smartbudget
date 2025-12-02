@@ -2,8 +2,14 @@
 Database Initialization Script
 Creates default data and indexes
 """
+import sys
+import os
 
-from app import create_app
+# Add the project root to the Python path
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, project_root)
+
+from backend.app import create_app
 from utils.db_connection import db
 from models.user_model import User
 from models.category_model import Category

@@ -37,11 +37,14 @@ def create_app(config_name=None):
     if isinstance(allowed_origins, str):
         allowed_origins = [origin.strip() for origin in allowed_origins.split(',')]
     
+    # -------------------------------------------------------
+    # ✅ FIXED: Enhanced CORS Configuration
+    # -------------------------------------------------------
     # Configure CORS with proper settings
     CORS(app, 
         resources={
-            r"/api/*": {
-                "origins": allowed_origins if allowed_origins else "*",
+            r"/*": {  # Changed from r"/api/*" to r"/*" to allow all routes
+                "origins": "*",  # Allow all origins in development
                 "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
                 "allow_headers": [
                     "Content-Type", 

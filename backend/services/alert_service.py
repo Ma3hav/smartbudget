@@ -2,8 +2,8 @@
 Alert Service - Handles budget alerts and notifications
 """
 
-from models.alert_model import Alert
-from utils.db_connection import get_alerts_collection, get_expenses_collection
+from backend.models.alert_model import Alert
+from backend.utils.db_connection import get_alerts_collection, get_expenses_collection
 from bson import ObjectId
 from datetime import datetime, timedelta
 

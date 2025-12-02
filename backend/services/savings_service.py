@@ -2,9 +2,9 @@
 Savings Service - Handles savings goals
 """
 
-from models.savings_model import SavingsGoal
-from utils.db_connection import get_savings_goals_collection
-from utils.validation import validate_amount
+from backend.models.savings_model import SavingsGoal
+from backend.utils.db_connection import get_savings_goals_collection
+from backend.utils.validation import validate_amount
 from bson import ObjectId
 from datetime import datetime
 
