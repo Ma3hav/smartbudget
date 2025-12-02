@@ -31,8 +31,8 @@ class Database:
     def connect(self):
         """Establish connection to MongoDB"""
         try:
-            mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/smartbudget')
-            db_name = os.getenv('DB_NAME', 'smartbudget')
+            mongo_uri = os.getenv('mongodb+srv://madhavsinghaiml_db_user:G3oxbNz0hCFIStAe@m0.pf8vlgt.mongodb.net/smartbudget?retryWrites=true&w=majority&appName=M0', 'mongodb://localhost:27017/smartbudget')
+            db_name = os.getenv('smartbudget', 'smartbudget')
             
             # Create MongoDB client
             self._client = MongoClient(
