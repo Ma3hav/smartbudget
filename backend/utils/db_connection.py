@@ -1,6 +1,9 @@
 """
 Database connection utility for MongoDB
+<<<<<<< HEAD
 FIXED VERSION with lazy initialization to prevent circular imports
+=======
+>>>>>>> 1c2fe5dc2b4220517cd0524fcda2e633dc1cfa16
 """
 
 from pymongo import MongoClient
@@ -12,12 +15,19 @@ load_dotenv()
 
 
 class Database:
+<<<<<<< HEAD
     """MongoDB database connection manager with lazy initialization"""
+=======
+    """MongoDB database connection manager"""
+>>>>>>> 1c2fe5dc2b4220517cd0524fcda2e633dc1cfa16
     
     _instance = None
     _client = None
     _db = None
+<<<<<<< HEAD
     _is_connected = False  # Track connection state
+=======
+>>>>>>> 1c2fe5dc2b4220517cd0524fcda2e633dc1cfa16
     
     def __new__(cls):
         """Singleton pattern for database connection"""
@@ -26,6 +36,7 @@ class Database:
         return cls._instance
     
     def __init__(self):
+<<<<<<< HEAD
         """Initialize database connection manager (does NOT connect yet)"""
         # Don't connect here - wait for explicit connect() call
         pass
@@ -37,6 +48,14 @@ class Database:
             print("✅ Database already connected")
             return True
             
+=======
+        """Initialize database connection"""
+        if self._client is None:
+            self.connect()
+    
+    def connect(self):
+        """Establish connection to MongoDB"""
+>>>>>>> 1c2fe5dc2b4220517cd0524fcda2e633dc1cfa16
         try:
             mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/smartbudget')
             db_name = os.getenv('DB_NAME', 'smartbudget')
@@ -54,6 +73,7 @@ class Database:
             
             # Get database
             self._db = self._client[db_name]
+<<<<<<< HEAD
             self._is_connected = True
             
             print(f"✅ Connected to MongoDB: {db_name}")
@@ -70,14 +90,30 @@ class Database:
         except Exception as e:
             print(f"❌ Unexpected error connecting to MongoDB: {e}")
             self._is_connected = False
+=======
+            
+            print(f"✅ Connected to MongoDB: {db_name}")
+            
+            # Create indexes
+            self._create_indexes()
+            
+        except (ConnectionFailure, ServerSelectionTimeoutError) as e:
+            print(f"❌ Failed to connect to MongoDB: {e}")
+            raise
+        except Exception as e:
+            print(f"❌ Unexpected error connecting to MongoDB: {e}")
+>>>>>>> 1c2fe5dc2b4220517cd0524fcda2e633dc1cfa16
             raise
     
     def _create_indexes(self):
         """Create database indexes for better performance"""
+<<<<<<< HEAD
         if not self._is_connected or self._db is None:
             print("⚠️ Cannot create indexes: Database not connected")
             return
             
+=======
+>>>>>>> 1c2fe5dc2b4220517cd0524fcda2e633dc1cfa16
         try:
             # Users collection indexes
             self._db.users.create_index('email', unique=True)
@@ -107,18 +143,28 @@ class Database:
             print(f"⚠️ Warning: Could not create indexes: {e}")
     
     def get_db(self):
+<<<<<<< HEAD
         """Get database instance (connects if not connected)"""
         if not self._is_connected or self._db is None:
             print("⚠️ Database not connected, attempting to connect...")
+=======
+        """Get database instance"""
+        if self._db is None:
+>>>>>>> 1c2fe5dc2b4220517cd0524fcda2e633dc1cfa16
             self.connect()
         return self._db
     
     def get_collection(self, collection_name):
+<<<<<<< HEAD
         """Get a specific collection (connects if needed)"""
         db = self.get_db()
         if db is None:
             raise ConnectionError("Failed to get database connection")
         return db[collection_name]
+=======
+        """Get a specific collection"""
+        return self._db[collection_name]
+>>>>>>> 1c2fe5dc2b4220517cd0524fcda2e633dc1cfa16
     
     def close(self):
         """Close database connection"""
@@ -126,19 +172,28 @@ class Database:
             self._client.close()
             self._client = None
             self._db = None
+<<<<<<< HEAD
             self._is_connected = False
+=======
+>>>>>>> 1c2fe5dc2b4220517cd0524fcda2e633dc1cfa16
             print("✅ MongoDB connection closed")
     
     def ping(self):
         """Test database connection"""
         try:
+<<<<<<< HEAD
             if not self._is_connected or self._client is None:
                 return False
+=======
+>>>>>>> 1c2fe5dc2b4220517cd0524fcda2e633dc1cfa16
             self._client.admin.command('ping')
             return True
         except Exception as e:
             print(f"❌ Database ping failed: {e}")
+<<<<<<< HEAD
             self._is_connected = False
+=======
+>>>>>>> 1c2fe5dc2b4220517cd0524fcda2e633dc1cfa16
             return False
     
     def drop_database(self):
@@ -150,9 +205,12 @@ class Database:
     def get_stats(self):
         """Get database statistics"""
         try:
+<<<<<<< HEAD
             if not self._is_connected or self._db is None:
                 return {"error": "Database not connected"}
                 
+=======
+>>>>>>> 1c2fe5dc2b4220517cd0524fcda2e633dc1cfa16
             stats = self._db.command('dbStats')
             return {
                 'database': self._db.name,
@@ -164,6 +222,7 @@ class Database:
             }
         except Exception as e:
             print(f"❌ Failed to get database stats: {e}")
+<<<<<<< HEAD
             return {"error": str(e)}
     
     def health_check(self):
@@ -181,6 +240,15 @@ db = Database()
 
 
 # Helper functions
+=======
+            return {}
+
+
+# Singleton instance
+db = Database()
+
+
+>>>>>>> 1c2fe5dc2b4220517cd0524fcda2e633dc1cfa16
 def get_db():
     """Helper function to get database instance"""
     return db.get_db()
