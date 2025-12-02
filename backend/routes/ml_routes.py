@@ -5,10 +5,10 @@ FIXED VERSION with proper error handling
 
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from services.expense_service import ExpenseService
-from ml.forecasting import get_expense_forecast, get_category_forecast
-from ml.anomaly_detection import check_spending_anomalies, check_budget_status
-from ml.insights import (
+from backend.services.expense_service import ExpenseService
+from backend.ml.forecasting import get_expense_forecast, get_category_forecast
+from backend.ml.anomaly_detection import check_spending_anomalies, check_budget_status
+from backend.ml.insights import (
     get_spending_insights,
     get_budget_recommendations,
     get_financial_health_score,

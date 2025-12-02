@@ -7,9 +7,9 @@ FIXED VERSION with enhanced CORS and logging
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
-from .config import config
-from utils.db_connection import db
-from utils.logger import setup_logger, setup_request_logging, setup_error_logging
+from backend.config import config
+from backend.utils.db_connection import db
+from backend.utils.logger import setup_logger, setup_request_logging, setup_error_logging
 import os
 
 
@@ -39,26 +39,26 @@ def create_app(config_name=None):
     
     # Configure CORS with proper settings
     CORS(app, 
-         resources={
-             r"/api/*": {
-                 "origins": allowed_origins if allowed_origins else "*",
-                 "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-                 "allow_headers": [
-                     "Content-Type", 
-                     "Authorization",
-                     "Access-Control-Allow-Credentials"
-                 ],
-                 "expose_headers": [
-                     "Content-Type", 
-                     "Authorization",
-                     "X-RateLimit-Limit",
-                     "X-RateLimit-Remaining",
-                     "X-RateLimit-Reset"
-                 ],
-                 "supports_credentials": True,
-                 "max_age": 3600
-             }
-         })
+        resources={
+            r"/api/*": {
+                "origins": allowed_origins if allowed_origins else "*",
+                "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+                "allow_headers": [
+                    "Content-Type", 
+                    "Authorization",
+                    "Access-Control-Allow-Credentials"
+                ],
+                "expose_headers": [
+                    "Content-Type", 
+                    "Authorization",
+                    "X-RateLimit-Limit",
+                    "X-RateLimit-Remaining",
+                    "X-RateLimit-Reset"
+                ],
+                "supports_credentials": True,
+                "max_age": 3600
+            }
+        })
 
     # -------------------------------------------------------
     # ✅ NEW: Setup Logging
@@ -118,7 +118,7 @@ def create_app(config_name=None):
     # -------------------------------------------------------
     # Register Blueprints
     # -------------------------------------------------------
-    from routes import (
+    from backend.routes import (
         auth_routes,
         expense_routes,
         category_routes,
