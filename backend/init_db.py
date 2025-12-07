@@ -10,9 +10,9 @@ project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, project_root)
 
 from backend.app import create_app
-from utils.db_connection import db
-from models.user_model import User
-from models.category_model import Category
+from backend.utils.db_connection import db
+from backend.models.user_model import User
+from backend.models.category_model import Category
 from bson import ObjectId
 import os
 
